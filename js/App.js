@@ -19,15 +19,26 @@ var App = React.createClass({
 		cat: React.PropTypes.number.isRequired
 	},
 	render:function(){
-		var txt = this.props.txt;
-		var cat = this.props.cat;
+		return(
+		 <div>
+		 	<Widget txt={this.state.txt} update={this.update} />
+		 	<Widget txt={this.state.txt} update={this.update} />
+		 	<Widget txt={this.state.txt} update={this.update} />
+		 	<Widget txt={this.state.txt} update={this.update} />
+		 </div>
+		 );
+	}
+});
+
+var Widget = React.createClass({
+render:function(){
+	   	var txt = this.props.txt;
+		var update = this.props.update;
 		return(
 		 <div>
 		 	<h1>Hello World - </h1>
-		 	<h2>{txt}</h2>
-		 	<b>{cat}</b>
-		 	<input type="text" onChange={this.update} />
-		 	<p>My state:{this.state.txt}</p>
+		 	<input type="text" onChange={update} />
+		 	<p>My state:{txt}</p>
 		 </div>
 		 )
 	}
