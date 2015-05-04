@@ -1,45 +1,39 @@
 var App = React.createClass({
 	getInitialState:function(){
 		return{
-			txt: 'the state txt',
-			id: 0
+			red: 0,
+			green: 0,
+			blue: 0
 		}
 	},
 	update: function(e){
-		this.setState({ txt: e.target.value});
-	},
-	getDefaultProps:function(){
-		return {
-			txt: 'this is a default prop',
-			cat: 100
-		}
-	},
-	propTypes:{
-		txt: React.PropTypes.string,
-		cat: React.PropTypes.number.isRequired
+		this.setState({
+			red:this.refs.red.refs.inp.getDOMNode().value,
+			green:this.refs.green.refs.inp.getDOMNode().value,
+			blue:this.refs.blue.refs.inp.getDOMNode().value
+		});
 	},
 	render:function(){
 		return(
 		 <div>
-		 	<Widget txt={this.state.txt} update={this.update} />
-		 	<Widget txt={this.state.txt} update={this.update} />
-		 	<Widget txt={this.state.txt} update={this.update} />
-		 	<Widget txt={this.state.txt} update={this.update} />
+		 	<Slider ref="red" update={this.update} />
+		 	<label>{this.state.red}</label>
+		 	<Slider ref="green" update={this.update} />
+		 	<label>{this.state.green}</label>
+		 	<Slider ref="blue" update={this.update} />
+		 	<label>{this.state.blue}</label>
 		 </div>
 		 );
 	}
 });
 
-var Widget = React.createClass({
+var Slider = React.createClass({
 render:function(){
-	   	var txt = this.props.txt;
 		var update = this.props.update;
 		return(
-		 <div>
-		 	<h1>Hello World - </h1>
-		 	<input type="text" onChange={update} />
-		 	<p>My state:{txt}</p>
-		 </div>
+			<div>
+		 	<input type="range" min="0" max="255" onChange={this.props.update} />
+		 	</div>
 		 )
 	}
 });
