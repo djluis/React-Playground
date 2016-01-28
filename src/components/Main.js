@@ -7,7 +7,7 @@ import React from 'react';
 class AppComponent extends React.Component {
   render() {
     return (
-      <Quiz books={['b1','b2','b3']} />
+      <Quiz books={['b1','b2','b3']} onclick="update()" />
     );
   }
 }

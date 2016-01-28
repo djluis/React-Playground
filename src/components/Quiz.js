@@ -4,8 +4,12 @@ import React from 'react';
 import Book from './Book'
 
 class QuizComponent extends React.Component {
-  constructor(){
-  	return {books: this.props.books};
+  constructor(props){
+  	super(props);
+  	this.state = {books: props.books};
+  }
+  update(){
+  	this.setState({ books : this.state.books.push('b99') });
   }
   render() {
     return (
@@ -18,6 +22,7 @@ class QuizComponent extends React.Component {
   }
 }
 
+QuizComponent.propTypes = { books : React.PropTypes.array}
 QuizComponent.defaultProps = {};
 
 export default QuizComponent;
